@@ -18,7 +18,7 @@ def indexa_colecao(imagens):
         response = client.index_faces(
             CollectionId='personagem',
             DetectionAttributes=[],
-            ExternalImageId=i,
+            ExternalImageId=i[:-4],
             Image={
                 'S3Object': {
                     'Bucket': 'reconhecimento-inicio',
