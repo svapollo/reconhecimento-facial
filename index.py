@@ -9,22 +9,20 @@ def lista_imagens():
     bucket = s3.Bucket('reconhecimento-inicio')
     for imagem in bucket.objects.all():
         imagens.append(imagem.key)
+    print(imagens)
     return imagens
 
 
 def indexa_colecao(imagens):
     for i in imagens:
         response = client.index_faces(
-            CollectionId='faces',
-            DetectionAttributes=[
-            ],
-            ExternalImageId=i[:-4],
+            CollectionId='personagem',
+            DetectionAttributes=[],
+            ExternalImageId=i,
             Image={
                 'S3Object': {
                     'Bucket': 'reconhecimento-inicio',
-                    'Name': i,
-                },
-            },
+                    'Name': i}}
         )
 
 
