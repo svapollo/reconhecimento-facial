@@ -26,7 +26,7 @@ $.ajax(
       tdInfoFoto = document.createElement("img");
       tdInfoFoto.height = 100;
       tdInfoFoto.width = 68;
-      tdInfoFoto.src = 'https://s3.amazonaws.com/reconhecimento-inicio/' + dados.nome;
+      tdInfoFoto.src = 'https://s3.amazonaws.com/reconhecimento-inicio/' + dados.nome + '.jpg';
      
 
 
