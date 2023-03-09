@@ -13,7 +13,7 @@ def detecta_faces():
         Image={
             'S3Object': {
                 'Bucket': 'comparar',
-                'Name': 'tres.jpg',
+                'Name': 'analise.jpg',
             },
         },
     )
@@ -66,10 +66,11 @@ def exclui_imagem_colecao(faceId_detectadas):
     )
 
 
-faces_detectadas = detecta_faces()
-faceId_detectadas = cria_lista_faceId_detectadas(faces_detectadas)
-resultado_comparacao = compara_imagens(faceId_detectadas)
-dados_json = gera_dados_json(resultado_comparacao)
-publica_dados(dados_json)
-exclui_imagem_colecao(faceId_detectadas)
-print(json.dumps(dados_json, indent=4))
+def main(event, context):
+    faces_detectadas = detecta_faces()
+    faceId_detectadas = cria_lista_faceId_detectadas(faces_detectadas)
+    resultado_comparacao = compara_imagens(faceId_detectadas)
+    dados_json = gera_dados_json(resultado_comparacao)
+    publica_dados(dados_json)
+    exclui_imagem_colecao(faceId_detectadas)
+    print(json.dumps(dados_json, indent=4))
